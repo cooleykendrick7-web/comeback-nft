@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The $90 Million Comeback — Mint (1 of 1)</title>
+<style>
+body{background:#0a0a0a;color:#fff;font-family:-apple-system,system-ui,sans-serif;margin:0;padding:24px;text-align:center}
+h1{font-size:26px;margin:14px 0 2px}.gold{color:#d4af37}
+.sub{color:#aaa;margin:0 0 20px}
+img.art{width:min(440px,92vw);border-radius:16px;border:1px solid #2a2a2a}
+.card{background:#161616;border:1px solid #2a2a2a;border-radius:16px;padding:18px;max-width:440px;margin:16px auto;text-align:left;font-size:15px;line-height:1.55}
+button{display:block;width:100%;max-width:440px;margin:12px auto;padding:18px;font-size:19px;font-weight:700;border:0;border-radius:14px;cursor:pointer}
+#connect{background:#fff;color:#000}
+#deploy{background:#d4af37;color:#000}
+button:disabled{opacity:.35}
+#status{max-width:440px;margin:14px auto;color:#ddd;font-size:15px;line-height:1.5;word-break:break-word}
+a{color:#6cf}
+.small{color:#888;font-size:13px;max-width:440px;margin:8px auto;line-height:1.5}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:13px;word-break:break-all}
+</style></head><body>
+<h1>THE <span class="gold">$90 MILLION</span> COMEBACK</h1>
+<p class="sub">1 of 1 NFT &bull; Base chain &bull; Kendrick Cooley — 5HUNITK</p>
+<img class="art" src="artwork.webp" alt="The $90 Million Comeback artwork">
+<div class="card">
+<b>What this does:</b> builds your one-and-only NFT contract on Base and creates the single token — Token #1 — straight into <b>your wallet</b>. The contract has <b>no mint button at all</b>: nobody, not even you, can ever make a second one.<br><br>
+<b>How:</b> your wallet is a smart wallet, so the blueprint goes to the public builder-factory on Base (<span class="mono">0x4e59&hellip;4956C</span>) — the same one that built Black Coin. The NFT's address is already known before we start:<br>
+<span class="mono"><b>0xb41A364404c91BBa65Ff05422F22b668Ba43f59B</b></span><br><br>
+After you confirm, this page checks the blockchain itself — code present, name right, Token #1 owned by your wallet — <b>before</b> it says MINTED.
+</div>
+<button id="connect">1. Connect my wallet</button>
+<button id="deploy" disabled>2. Mint my 1-of-1</button>
+<div id="status">Open this page inside <b>Coinbase Wallet&rsquo;s Browser</b> to start.</div>
+<p class="small">Network: Base (8453). Mint gas is about a penny from your Base ETH (you have about $0.60 there — plenty). Nothing else is charged, nothing else is approved. Contract source: ComebackNFT.sol (Solidity 0.8.20) in this same repo. Royalty on resales: 10% to your wallet.</p>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+<script>
+const BYTECODE = "0x608060405234801561000f575f80fd5b50604051610fc2380380610fc283398101604081905261002e916100a6565b5f61003982826101da565b50600180546001600160a01b03191673ef8fb653a0ab5b7f01d0cd0dca07b2c1ee3196e390811782556040515f907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef908290a450610294565b634e487b7160e01b5f52604160045260245ffd5b5f602082840312156100b6575f80fd5b81516001600160401b038111156100cb575f80fd5b8201601f810184136100db575f80fd5b80516001600160401b038111156100f4576100f4610092565b604051601f8201601f19908116603f011681016001600160401b038111828210171561012257610122610092565b604052818152828201602001861015610139575f80fd5b8160208401602083015e5f91810160200191909152949350505050565b600181811c9082168061016a57607f821691505b60208210810361018857634e487b7160e01b5f52602260045260245ffd5b50919050565b601f8211156101d557805f5260205f20601f840160051c810160208510156101b35750805b601f840160051c820191505b818110156101d2575f81556001016101bf565b50505b505050565b81516001600160401b038111156101f3576101f3610092565b610207816102018454610156565b8461018e565b6020601f821160018114610239575f83156102225750848201515b5f19600385901b1c1916600184901b1784556101d2565b5f84815260208120601f198516915b828110156102685787850151825560209485019460019092019101610248565b508482101561028557868401515f19600387901b60f8161c191681555b50505050600190811b01905550565b610d21806102a15f395ff3fe608060405234801561000f575f80fd5b50600436106100fb575f3560e01c80636352211e11610093578063a22cb46511610063578063a22cb46514610282578063b88d4fde14610295578063c87b56dd146102a8578063e985e9c5146102bb575f80fd5b80636352211e1461022357806370a082311461023657806389a890021461025757806395d89b411461025f575f80fd5b80630d9019e1116100ce5780630d9019e1146101b057806323b872dd146101cb5780632a55205a146101de57806342842e0e14610210575f80fd5b806301ffc9a7146100ff57806306fdde0314610127578063081812fc14610170578063095ea7b31461019b575b5f80fd5b61011261010d366004610944565b6102f6565b60405190151581526020015b60405180910390f35b6101636040518060400160405280601881526020017f54686520243930204d696c6c696f6e20436f6d656261636b000000000000000081525081565b60405161011e919061098d565b61018361017e36600461099f565b610362565b6040516001600160a01b03909116815260200161011e565b6101ae6101a93660046109d1565b6103a7565b005b61018373ef8fb653a0ab5b7f01d0cd0dca07b2c1ee3196e381565b6101ae6101d93660046109f9565b610463565b6101f16101ec366004610a33565b610499565b604080516001600160a01b03909316835260208301919091520161011e565b6101ae61021e3660046109f9565b6104d4565b61018361023136600461099f565b6104ee565b610249610244366004610a53565b610520565b60405190815260200161011e565b610249600181565b6101636040518060400160405280600481526020016339304d4360e01b81525081565b6101ae610290366004610a6c565b61058d565b6101ae6102a3366004610ab9565b6105f8565b6101636102b636600461099f565b6106fd565b6101126102c9366004610b96565b6001600160a01b039182165f90815260036020908152604080832093909416825291909152205460ff1690565b5f6301ffc9a760e01b6001600160e01b03198316148061032657506380ac58cd60e01b6001600160e01b03198316145b806103415750635b5e139f60e01b6001600160e01b03198316145b8061035c575063152a902d60e11b6001600160e01b03198316145b92915050565b5f6001821461038c5760405162461bcd60e51b815260040161038390610bc7565b60405180910390fd5b505f908152600260205260409020546001600160a01b031690565b5f6103b1826104ee565b9050336001600160a01b03821614806103ec57506001600160a01b0381165f90815260036020908152604080832033845290915290205460ff165b6104085760405162461bcd60e51b815260040161038390610bf2565b5f8281526002602052604080822080546001600160a01b0319166001600160a01b0387811691821790925591518593918516917f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b92591a4505050565b61046d83826107ae565b6104895760405162461bcd60e51b815260040161038390610bf2565b610494838383610880565b505050565b5f8073ef8fb653a0ab5b7f01d0cd0dca07b2c1ee3196e36127106104bf856103e8610c1a565b6104c99190610c3d565b915091509250929050565b61049483838360405180602001604052805f8152506105f8565b5f6001821461050f5760405162461bcd60e51b815260040161038390610bc7565b50506001546001600160a01b031690565b5f6001600160a01b0382166105665760405162461bcd60e51b815260206004820152600c60248201526b7a65726f206164647265737360a01b6044820152606401610383565b6001546001600160a01b03838116911614610581575f610584565b60015b60ff1692915050565b335f8181526003602090815260408083206001600160a01b03871680855290835292819020805460ff191686151590811790915590519081529192917f17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31910160405180910390a35050565b61060284836107ae565b61061e5760405162461bcd60e51b815260040161038390610bf2565b610629848484610880565b6001600160a01b0383163b156106f757604051630a85bd0160e11b808252906001600160a01b0385169063150b7a029061066d903390899088908890600401610c5c565b6020604051808303815f875af1158015610689573d5f803e3d5ffd5b505050506040513d601f19601f820116820180604052508101906106ad9190610c98565b6001600160e01b031916146106f75760405162461bcd60e51b815260206004820152601060248201526f1d5b9cd85999481c9958da5c1a595b9d60821b6044820152606401610383565b50505050565b60606001821461071f5760405162461bcd60e51b815260040161038390610bc7565b5f805461072b90610cb3565b80601f016020809104026020016040519081016040528092919081815260200182805461075790610cb3565b80156107a25780601f10610779576101008083540402835291602001916107a2565b820191905f5260205f20905b81548152906001019060200180831161078557829003601f168201915b50505050509050919050565b5f600182146107cf5760405162461bcd60e51b815260040161038390610bc7565b6001546001600160a01b038481169116146108205760405162461bcd60e51b8152602060048201526011602482015270333937b69034b9903737ba1037bbb732b960791b6044820152606401610383565b336001600160a01b038416148061084c57505f828152600260205260409020546001600160a01b031633145b8061087957506001600160a01b0383165f90815260036020908152604080832033845290915290205460ff165b9392505050565b6001600160a01b0382166108c55760405162461bcd60e51b815260206004820152600c60248201526b7a65726f206164647265737360a01b6044820152606401610383565b5f8181526002602052604080822080546001600160a01b0319908116909155600180546001600160a01b0387811691909316811790915591518493918716917fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef91a4505050565b6001600160e01b031981168114610941575f80fd5b50565b5f60208284031215610954575f80fd5b81356108798161092c565b5f81518084528060208401602086015e5f602082860101526020601f19601f83011685010191505092915050565b602081525f610879602083018461095f565b5f602082840312156109af575f80fd5b5035919050565b80356001600160a01b03811681146109cc575f80fd5b919050565b5f80604083850312156109e2575f80fd5b6109eb836109b6565b946020939093013593505050565b5f805f60608486031215610a0b575f80fd5b610a14846109b6565b9250610a22602085016109b6565b929592945050506040919091013590565b5f8060408385031215610a44575f80fd5b50508035926020909101359150565b5f60208284031215610a63575f80fd5b610879826109b6565b5f8060408385031215610a7d575f80fd5b610a86836109b6565b915060208301358015158114610a9a575f80fd5b809150509250929050565b634e487b7160e01b5f52604160045260245ffd5b5f805f8060808587031215610acc575f80fd5b610ad5856109b6565b9350610ae3602086016109b6565b925060408501359150606085013567ffffffffffffffff811115610b05575f80fd5b8501601f81018713610b15575f80fd5b803567ffffffffffffffff811115610b2f57610b2f610aa5565b604051601f8201601f19908116603f0116810167ffffffffffffffff81118282101715610b5e57610b5e610aa5565b604052818152828201602001891015610b75575f80fd5b816020840160208301375f6020838301015280935050505092959194509250565b5f8060408385031215610ba7575f80fd5b610bb0836109b6565b9150610bbe602084016109b6565b90509250929050565b6020808252601190820152703737b732bc34b9ba32b73a103a37b5b2b760791b604082015260600190565b6020808252600e908201526d1b9bdd08185d5d1a1bdc9a5e995960921b604082015260600190565b808202811582820484141761035c57634e487b7160e01b5f52601160045260245ffd5b5f82610c5757634e487b7160e01b5f52601260045260245ffd5b500490565b6001600160a01b03858116825284166020820152604081018390526080606082018190525f90610c8e9083018461095f565b9695505050505050565b5f60208284031215610ca8575f80fd5b81516108798161092c565b600181811c90821680610cc757607f821691505b602082108103610ce557634e487b7160e01b5f52602260045260245ffd5b5091905056fea2646970667358221220cd34e8bfc088db327b1c76e52e98bb670dd425121173a3cf26d573adf008319364736f6c634300081a00330000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000004068747470733a2f2f636f6f6c65796b656e647269636b372d7765622e6769746875622e696f2f636f6d656261636b2d6e66742f6d657461646174612e6a736f6e";
+const ABI = [
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "tokenURI_",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "approved",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "Approval",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "approved",
+        "type": "bool"
+      }
+    ],
+    "name": "ApprovalForAll",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "Transfer",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "RECIPIENT",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "TOKEN_ID",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "approve",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "balanceOf",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getApproved",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      }
+    ],
+    "name": "isApprovedForAll",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "name",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "ownerOf",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "salePrice",
+        "type": "uint256"
+      }
+    ],
+    "name": "royaltyInfo",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "safeTransferFrom",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "safeTransferFrom",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "approved",
+        "type": "bool"
+      }
+    ],
+    "name": "setApprovalForAll",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes4",
+        "name": "interfaceId",
+        "type": "bytes4"
+      }
+    ],
+    "name": "supportsInterface",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "symbol",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "tokenURI",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "transferFrom",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+];
+const PROXY = "0x4e59b44847b379578588920cA78FbF26c0B4956C";
+const SALT = "0x000000000000000000000000ef8fb653a0ab5b7f01d0cd0dca07b2c1ee3196e3";
+const PREDICTED = "0xb41A364404c91BBa65Ff05422F22b668Ba43f59B";
+const EXPECTED = "0xef8fb653a0ab5b7f01d0cd0dca07b2c1ee3196e3";
+let provider, signer;
+const $ = id => document.getElementById(id);
+const say = m => { $("status").innerHTML = m; };
+$("connect").onclick = async () => {
+  try {
+    if (!window.ethereum) { say("No wallet found. Open this link inside <b>Coinbase Wallet &rarr; Browser</b> (the globe icon), not in Safari/Chrome."); return; }
+    provider = new ethers.BrowserProvider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    let net = await provider.getNetwork();
+    if (net.chainId !== 8453n) {
+      say("Switching to Base&hellip;");
+      try { await window.ethereum.request({method:"wallet_switchEthereumChain", params:[{chainId:"0x2105"}]}); }
+      catch(e){ await window.ethereum.request({method:"wallet_addEthereumChain", params:[{chainId:"0x2105", chainName:"Base", nativeCurrency:{name:"Ether",symbol:"ETH",decimals:18}, rpcUrls:["https://mainnet.base.org"], blockExplorerUrls:["https://basescan.org"]}]}); }
+      provider = new ethers.BrowserProvider(window.ethereum);
+      net = await provider.getNetwork();
+      if (net.chainId !== 8453n) { say("Wallet is not on Base yet. Switch the network to Base in your wallet, then tap Connect again."); return; }
+    }
+    signer = await provider.getSigner();
+    const addr = (await signer.getAddress()).toLowerCase();
+    const bal = await provider.getBalance(addr);
+    if (addr !== EXPECTED) { say("Connected wallet is <b>" + addr + "</b>.<br>That is NOT your main wallet (0xef8f&hellip;196e3). Switch accounts in Coinbase Wallet and tap Connect again. Do not mint from the wrong wallet."); return; }
+    const existing = await provider.getCode(PREDICTED);
+    if (existing !== "0x") { say("&#9989; The NFT is ALREADY minted at " + PREDICTED + " &mdash; no need to mint again. Send Milli a screenshot."); return; }
+    say("&#9989; Connected: <b>" + addr + "</b><br>Balance on Base: <b>" + ethers.formatEther(bal) + " ETH</b><br>NFT address will be: <b>" + PREDICTED + "</b><br>Now tap <b>Mint my 1-of-1</b> and confirm in your wallet.");
+    $("deploy").disabled = false; $("connect").disabled = true;
+  } catch(e){ say("Connect error: " + (e.shortMessage || e.message || e)); }
+};
+$("deploy").onclick = async () => {
+  try {
+    $("deploy").disabled = true;
+    say("Sending the blueprint to the builder factory&hellip; confirm in your wallet.");
+    const data = SALT + BYTECODE.slice(2);
+    const tx = await signer.sendTransaction({to: PROXY, data: data, value: 0n});
+    say("Sent. Now watching the blockchain for your NFT to appear at<br><b>" + PREDICTED + "</b><br>(proving it for real &mdash; give it up to a minute)");
+    const nft = new ethers.Contract(PREDICTED, ABI, provider);
+    for (let i = 0; i < 30; i++) {
+      await new Promise(r => setTimeout(r, 3000));
+      const code = await provider.getCode(PREDICTED);
+      if (code !== "0x") {
+        const nm = await nft.name();
+        const owner = (await nft.ownerOf(1)).toLowerCase();
+        const uri = await nft.tokenURI(1);
+        if (nm === "The $90 Million Comeback" && owner === EXPECTED) {
+          say("&#127881; <b>YOUR NFT IS MINTED &mdash; PROVEN ON-CHAIN!</b><br><br>Contract address:<br><b>" + PREDICTED + "</b><br><br>Checked by this page, straight from the blockchain:<br>&bull; Name: " + nm + "<br>&bull; Token #1 owner: <b>your wallet</b><br>&bull; Metadata: " + uri + "<br><br><a href='https://basescan.org/token/" + PREDICTED + "' target='_blank'>View it on BaseScan</a> &bull; <a href='https://opensea.io/assets/base/" + PREDICTED + "/1' target='_blank'>View it on OpenSea</a><br><br>Send Milli a screenshot. Next step: listing it for $90,000,000.");
+          return;
+        }
+        say("Code found at the address but the checks did not all pass (name: " + nm + ", owner: " + owner + "). Screenshot this for Milli &mdash; do not tap anything else.");
+        return;
+      }
+    }
+    say("The NFT has not appeared on-chain yet after 90 seconds. Your confirm may still be processing. Wait a minute, then reopen this page and tap Connect &mdash; it will tell you if the NFT already exists. If not, screenshot this for Milli. Tx hash: " + (tx && tx.hash ? tx.hash : "unknown"));
+    $("deploy").disabled = false;
+  } catch(e){ $("deploy").disabled = false; say("Mint error: " + (e.shortMessage || e.message || e) + "<br>If the wallet never confirmed a transaction, nothing was spent. Screenshot this for Milli."); }
+};
+</script></body></html>
